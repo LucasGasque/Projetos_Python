@@ -27,11 +27,11 @@ while opção != 'encerrar': #loop para usar as funções multiplas vezes.
 
     elif opção == str(2): #Quantidade de itens.
         for produto, quantidade in estoque_quantidades.items():
-            print(f'{produto}: ' + f'{str(quantidade)} unidades')
+            print(f'{produto.title()}: ' + f'{str(quantidade)} unidades')
 
     elif opção == str(3): #Vendas
         for produto, quantidade in vendas.items():
-            print(f'{produto} R$: ' + str(quantidade))
+            print(f'{produto.title()}: ' + str(quantidade))
 
     elif opção == str(4): #Cadastrar produtos.
         produto = input('Digite o nome do produto cadastrado: ').lower()
@@ -58,7 +58,11 @@ while opção != 'encerrar': #loop para usar as funções multiplas vezes.
             print('Produto não encontrado')
         else:
             quantidade = int(input('Digite a quantidade: '))
-            vendas[produto] = quantidade
+            if int(estoque_quantidades[produto]) < quantidade:
+                print(f'Produtos insuficientes no estoque: {estoque_quantidades[produto]} restantes!')
+            else:
+                vendas[produto] = quantidade
+                estoque_quantidades[produto] = int(estoque_quantidades[produto]) - quantidade
 
     else: #Encerrar o programa.
         if opção == 'encerrar':
