@@ -1,4 +1,5 @@
 #Projeto-Controle de Estoques.
+import os
 
 #variaveis.
 estoque_produtos = {} #Produto.item : valor.value.
@@ -18,19 +19,23 @@ while opção != 'encerrar': #loop para usar as funções multiplas vezes.
     print('[5] Cadastrar compra de itens.')
     print('[6] Cadastrar retirada de itens.')
     opção = input('Digite o numero da opção, ou \'encerrar\' para fechar o programa: ')
-
+    os.system("clear") #limpar a tela
+    
     #Opções do terminal
 
     if opção == str(1): #Itens cadastrados.
         for produto, preço in estoque_produtos.items():
+            print('Produtos Cadastrados: ')
             print(f'{produto.title()} R$: ' + str(preço))
 
     elif opção == str(2): #Quantidade de itens.
         for produto, quantidade in estoque_quantidades.items():
+            print('Produtos em Estoque: ')
             print(f'{produto.title()}: ' + f'{str(quantidade)} unidades')
 
     elif opção == str(3): #Vendas
         for produto, quantidade in vendas.items():
+            print('Vendas: ')
             print(f'{produto.title()}: ' + str(quantidade))
 
     elif opção == str(4): #Cadastrar produtos.
@@ -72,7 +77,7 @@ while opção != 'encerrar': #loop para usar as funções multiplas vezes.
             continue
         else: #caso opção não seja Nº ou encerrar.
             print('Opção invalida')
-
+    
 else: #encerramento do programa.
     print('Obrigado por usar o Terminal de estoque!')
 
