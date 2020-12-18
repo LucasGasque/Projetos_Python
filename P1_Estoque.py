@@ -36,19 +36,22 @@ while opção != 'encerrar': #loop para usar as funções multiplas vezes.
     elif opção == str(4): #Cadastrar produtos.
         produto = input('Digite o nome do produto cadastrado: ').lower()
         valor = float(input('Digite o preço: '))
-        if estoque_produtos.get(produto):
+        if produto in estoque_produtos:
             print('Já existe o produto', produto)
+            alterar_valor = input('Alterar preço bolo("s/n"): ').lower()
+            if alterar_valor == 's':
+                estoque_produtos[produto] = valor             
         else:
             estoque_produtos[produto] = valor
 
     elif opção == str(5): #Registrar estoque.
         produto = input('Digite o nome do produto comprado: ')
         if produto in estoque_produtos: #verifica se o produto já foi cadastrado.
-            quantidade = int(input('Digite a quantidade: '))
-            if estoque_quantidades.get(produto):
-                print('Já existe o produto', produto)
+            quantidade = int(input('Digite a quantidade: ')) 
+            if produto in estoque_quantidades: #verifica já existe o produto
+                estoque_quantidades[produto] = int(estoque_quantidades[produto]) + quantidade #adiciona a quantidade registrada a já existente
             else:
-                estoque_quantidades[produto] = quantidade
+                estoque_quantidades[produto] = quantidade #adiciona itens primeira x
         else:
             print('Produto não cadastrado!')
 
