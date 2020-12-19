@@ -21,25 +21,26 @@ while opção != 'encerrar': #loop para usar as funções multiplas vezes.
     print('[4] Cadastrar novo item no estoque.')
     print('[5] Cadastrar compra de itens.')
     print('[6] Cadastrar retirada de itens.')
+    print('[7] Retirar produto cadastrado errado.')
     opção = input('Digite o numero da opção, ou \'encerrar\' para fechar o programa: ')
     limpar() #limpar a tela
     
     #Opções do terminal
 
     if opção == str(1): #Itens cadastrados.
+        print('Produtos Cadastrados: ')
         for produto, preço in estoque_produtos.items():
-            print('Produtos Cadastrados: ')
             print(f'{produto.title()} R$: ' + str(preço))
 
     elif opção == str(2): #Quantidade de itens.
+        print('Produtos em Estoque: ')
         for produto, quantidade in estoque_quantidades.items():
-            print('Produtos em Estoque: ')
             print(f'{produto.title()}: ' + f'{str(quantidade)} unidades')
 
     elif opção == str(3): #Vendas
+        print('Vendas: ')
         for produto, quantidade in vendas.items():
-            print('Vendas: ')
-            print(f'{produto.title()}: ' + str(quantidade))
+            print(f'{produto.title()}: ' + f'{str(quantidade)} unidades')
 
     elif opção == str(4): #Cadastrar produtos.
         produto = input('Digite o nome do produto cadastrado: ').lower()
@@ -74,6 +75,12 @@ while opção != 'encerrar': #loop para usar as funções multiplas vezes.
             else:
                 vendas[produto] = quantidade
                 estoque_quantidades[produto] = int(estoque_quantidades[produto]) - quantidade
+
+    elif opção == str(7): #Retirar itens cadastrados errados
+        for produto, preço in estoque_produtos.items():
+            print(f'{produto.title()} R$: ' + f'{preço}')
+        produto = input('Qual item deseja remover?: ').lower()
+        estoque_produtos.pop(produto)    
 
     else: #Encerrar o programa.
         if opção == 'encerrar':
