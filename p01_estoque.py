@@ -1,6 +1,9 @@
 #Projeto-Controle de Estoques.
 import os
 
+def limpar(): #função para limpar a tela
+    os.system("clear") 
+
 #variaveis.
 estoque_produtos = {} #Produto.item : valor.value.
 estoque_quantidades = {} #Produto.item : quantidade.value.
@@ -19,7 +22,7 @@ while opção != 'encerrar': #loop para usar as funções multiplas vezes.
     print('[5] Cadastrar compra de itens.')
     print('[6] Cadastrar retirada de itens.')
     opção = input('Digite o numero da opção, ou \'encerrar\' para fechar o programa: ')
-    os.system("clear") #limpar a tela
+    limpar() #limpar a tela
     
     #Opções do terminal
 
