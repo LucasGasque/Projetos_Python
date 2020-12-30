@@ -24,7 +24,7 @@ while opção != 'encerrar': #loop para usar as funções multiplas vezes.
     print('[7] Retirar produto cadastrado errado.')
     opção = input('Digite o numero da opção, ou \'encerrar\' para fechar o programa: ')
     limpar() #limpar a tela
-    
+  
     #Opções do terminal
 
     if opção == str(1): #Itens cadastrados.
